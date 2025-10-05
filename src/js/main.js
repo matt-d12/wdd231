@@ -1,10 +1,7 @@
 //Import functions from other mjs files
-import { getParkData, parkInfoLinks } from "./parkService.mjs";
+import { getParkData, parkInfoLinks, getInfoLinks } from "./parkService.mjs";
 import setHeaderFooter from "./setHeaderFooter.mjs";
 import { mediaCardTemplate } from "./templates.mjs";
-
-//Call parkData function to be used
-const parkData = getParkData();
 
 //Function to update the intro of a page
 function setParkIntro(data) {
@@ -25,7 +22,13 @@ function setParkInfoLinks(data) {
     infoEl.insertAdjacentHTML("afterbegin", html.join(""));
 }
 
+async function init() {
+  const parkData = await getParkData();
+  const links = getInfoLinks(parkData.images);
+  setHeaderFooter(parkData);
+  setParkIntro(parkData);
+  setParkInfoLinks(links);
+}
+
 //Call functions
-setHeaderFooter(parkData);           //Setup header and footer
-setParkIntro(parkData);              //Setup .intro with name and desc
-setParkInfoLinks(parkInfoLinks);     //Setup .info with cards built from the array
+init();
