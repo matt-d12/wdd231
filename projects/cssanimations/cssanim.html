@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animation Practice</title>
+    <link rel="stylesheet" href="anim.css" />
+  </head>
+  <body>
+    <header><h1>Animation Practice</h1></header>
+
+    <main class="content">
+      <!-- Activity 1: Transition -->
+      <div class="red"></div>
+
+      <!-- Activity 2: Keyframe Animation -->
+      <div class="yellow"></div>
+
+      <!-- Activity 3 & 4: Hide/Show -->
+      <button class="green">Toggle</button>
+      <div class="blue"></div>
+    </main>
+
+    <script>
+      // === Activity 4: JS Toggle ===
+      // get the green button
+      const greenButton = document.querySelector('.green');
+      // get the blue shape
+      const blueShape = document.querySelector('.blue');
+
+      // add event listener for click
+      greenButton.addEventListener('click', () => {
+        // toggle the .show class on blue
+        blueShape.classList.toggle('show');
+      });
+    </script>
+  </body>
+</html>
